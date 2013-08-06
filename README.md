@@ -68,7 +68,7 @@ Warm Up:
 1. Given a directory, retrieve a list of all files within directory and subdirectory (iterative or recursive).
 **--Done. just run get_dir_list.php from the CLI**
 2. Given an XML document with the following schema, please produce an order list of the steps as a string:
-
+```xml
 <root>
 <instructions>
 <step order="1">Cook spaghetti</step>
@@ -77,7 +77,7 @@ Warm Up:
 </instructions>
 <dish>Pasta</dish>
 </root>
-
+```
 **--Done. Just run order_list.php from the CLI**
 
 Task 1
