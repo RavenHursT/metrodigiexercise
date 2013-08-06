@@ -16,6 +16,7 @@ class WeatherApi extends BaseModel{
     }
 
     protected function _handleResponse(){
+        //TODO: should set HTTP error code here based on results.
         header('Content-type: application/json');
         echo json_encode($this->getResults());
         exit;
@@ -27,7 +28,7 @@ class WeatherApi extends BaseModel{
             if(count($qResult) > 1){
                 throw new Exception('There should not be multiple records w/ the same timestamp. Data is corrupt.');
             }
-            $this->setResults($qResult[0]);
+            $this->setResults(array_merge($qResult[0], array('success' => TRUE)));
         } else {
             $this->setWeatherSourceRequest(
                 new Weather_Source_API_Requests(
@@ -43,14 +44,22 @@ class WeatherApi extends BaseModel{
             );
             Weather_Source_API_Requests::finish();
 
-            $result = $this->getWeatherSourceRequest()->get_result()[0];
-            $this->setResults(array(
-                'timestamp' =>  $this->getRequest()['timestamp'],
-                'temp_min'  =>  $result['tempMin'],
-                'temp_max'  =>  $result['tempMax'],
-                'temp_avg'  =>  $result['tempAvg']
-            ));
-            DB::insert('sfo_data', $this->getResults());
+            if(count($this->getWeatherSourceRequest()->get_result())){
+                $result = $this->getWeatherSourceRequest()->get_result()[0];
+                $data = array(
+                    'timestamp' =>  $this->getRequest()['timestamp'],
+                    'temp_min'  =>  $result['tempMin'],
+                    'temp_max'  =>  $result['tempMax'],
+                    'temp_avg'  =>  $result['tempAvg']
+                );
+                DB::insert('sfo_data', $data);
+                $this->setResults(array_merge($data, array('success' => TRUE)));
+            } else {
+                $this->setResults(array(
+                    "success" => FALSE,
+                    "errorMessage" => 'There was a problem with the response from the WeatherSource API.'
+                ));
+            }
         }
         $this->_handleResponse();
     }

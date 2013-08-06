@@ -1,14 +1,38 @@
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="/lib/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lib/jquery.loadmask/jquery.loadmask.css" />
+    <link type="text/css" rel="stylesheet" href="/css/weatherapp.css" />
     <script type="text/javascript" language="JavaScript" src="/lib/jquery-ui-1.10.3.custom/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" language="JavaScript" src="/lib/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/lib/jquery.loadmask/jquery.loadmask.js"></script>
     <script type="text/javascript" language="JavaScript" src="/js/metroDatePicker.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/js/dataTableDisplay.js"></script>
     <script type="text/javascript" language="JavaScript" src="/js/weatherapp.js"></script>
 </head>
 </html>
 <body>
     <div id="date">
         <input type="text" id="datepicker" />
+    </div>
+    <div id="table-wrp">
+        <table id="weather-data-display">
+            <thead>
+                <tr>
+                    <th class="timestamp"><p>Timestamp</p></th>
+                    <th class="min-temp"><p>Minimum Temperature</p></th>
+                    <th class="max-temp"><p>Maximum Temperature</p></th>
+                    <th class="avg-temp"><p>Average Temperature</p></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="timestamp"><p>&nbsp;</p></td>
+                    <td class="min-temp"><p>&nbsp;</p></td>
+                    <td class="max-temp"><p>&nbsp;</p></td>
+                    <td class="avg-temp"><p>&nbsp;</p></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
