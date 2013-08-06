@@ -19,7 +19,7 @@ CREATE TABLE `sfo_data` (
 ```
 
 **Apache vhosts for www.metrodigiweather.com and api.metrodigiweather.com**
-
+```
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
 	ServerName www.metrodigiweather.com
@@ -56,7 +56,7 @@ CREATE TABLE `sfo_data` (
 
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-
+```
 **hosts file entries**
 
 127.0.0.1   localhost www.metrodigiweather.com api.metrodigiweather.com
@@ -66,7 +66,7 @@ CREATE TABLE `sfo_data` (
 
 Warm Up:
 1. Given a directory, retrieve a list of all files within directory and subdirectory (iterative or recursive).
-*--Done. just run get_dir_list.php from the CLI*
+**--Done. just run get_dir_list.php from the CLI**
 2. Given an XML document with the following schema, please produce an order list of the steps as a string:
 
 <root>
@@ -78,21 +78,21 @@ Warm Up:
 <dish>Pasta</dish>
 </root>
 
-*--Done. Just run order_list.php from the CLI*
+**--Done. Just run order_list.php from the CLI**
 
 Task 1
 Create a web application in PHP that displays the maximum, minimum, and average temperature for San Francisco airport for a particular day. The data can be retrieved from the National Climate Date Center website (http://www.ncdc.noaa.gov/most-popular-data#lcdus > Quality Controlled Local Climatological Data > California > SFO).  The application should provide the following functionality:
 
-1. Data should be downloaded from the climate date center and imported into a MySQL database *-- Climate center site didn't have any API that I could find so I opted for weathersource.com's API and PHP SDK.  Gives climatological data based on postal code w/ free account and can do longitude and latitude with a paid account.  Works for a POC.*
-2. Create a view that displays the temperature results in a table *--Done, could use better error handling in the client (see TODO comments in client-side code)*
-3. Users should also be able to click a refresh button on the page that will refresh the temperature data via an AJAX call. *--Wasn't quiet clear on how this should operate so I opted for an onChange ECMA event to just fire off multiple requests to the server*
+1. Data should be downloaded from the climate date center and imported into a MySQL database **-- Climate center site didn't have any API that I could find so I opted for weathersource.com's API and PHP SDK.  Gives climatological data based on postal code w/ free account and can do longitude and latitude with a paid account.  Works for a POC.**
+2. Create a view that displays the temperature results in a table **--Done, could use better error handling in the client (see TODO comments in client-side code)**
+3. Users should also be able to click a refresh button on the page that will refresh the temperature data via an AJAX call. **--Wasn't quiet clear on how this should operate so I opted for an onChange ECMA event to just fire off multiple requests to the server**
 
-Bonus Points: Provide a simple API to manage the data you have ingested in accordance with a REST/resource oriented architecture.*--Somewhat completed.  GET works, could use some polishing. Other HTTP methods are structured out in weatherapi.class.php, just not implemented.*
+Bonus Points: Provide a simple API to manage the data you have ingested in accordance with a REST/resource oriented architecture.**--Somewhat completed.  GET works, could use some polishing. Other HTTP methods are structured out in weatherapi.class.php, just not implemented.**
 
-Task 2 *--couldn't get to this in time*
+Task 2 **--couldn't get to this in time**
 Create an application (either web-based or CLI) that accepts two arguments for input. The system should output the sum of the two numbers but without using the native addition or subtraction operator within PHP.
 
-Task 3 *--couldn't get to this in time*
+Task 3 **--couldn't get to this in time**
 For the following function please provide both a recursive and iterative solution for any given input:
 
 f(x) = f(x-1)^3 + f(x-2)^2 + f(x-3)
